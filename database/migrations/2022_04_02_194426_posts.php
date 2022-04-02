@@ -13,7 +13,13 @@ class Posts extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('posts', function (Blueprint $table) {
+            $table->id();
+            $table->string('title');
+            $table->string('description');
+            $table->foreignId('website_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +29,6 @@ class Posts extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('posts');
     }
 }

@@ -13,7 +13,12 @@ class Websites extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('websites', function (Blueprint $table) {
+            $table->id();
+            $table->string('title');
+            $table->string('description');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +28,6 @@ class Websites extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('websites');
     }
 }

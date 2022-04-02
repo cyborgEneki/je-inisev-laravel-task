@@ -13,7 +13,11 @@ class SubscriberWebsites extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('subscriber_websites', function (Blueprint $table) {
+            $table->foreignId('website_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('subscriber_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->primary(['website_id', 'subscriber_id']);
+        });
     }
 
     /**
@@ -23,6 +27,6 @@ class SubscriberWebsites extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('subscriber_websites');
     }
 }

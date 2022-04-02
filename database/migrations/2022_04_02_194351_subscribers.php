@@ -13,7 +13,13 @@ class Subscribers extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('subscribers', function (Blueprint $table) {
+            $table->id();
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('email');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +29,6 @@ class Subscribers extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('subscribers');
     }
 }
