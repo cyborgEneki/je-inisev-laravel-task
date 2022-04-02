@@ -22,4 +22,11 @@ OPTIONAL:-
 - [X] Use of events/listeners.
 
 ## Note
-* Be sure to run php artisan db:seed to get the initial website data.
+* Be sure to run ```php artisan db:seed``` to get the initial website data.
+* In case you are using the database to hold jobs, remember to:
+    Change ```QUEUE_CONNECTION=database```
+    ```php artisan queue:table``` 
+    ```php artisan migrate```
+    ```php artisan queue:work```
+  to listen for scheduled jobs.
+
