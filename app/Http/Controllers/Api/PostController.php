@@ -30,6 +30,6 @@ class PostController extends Controller
 
         event(new NewPost($postSubscribers, $post));
 
-        return response()->json(['message' => '', 'status' => 200]);
+        return response()->json(['message' => 'Success', 'status' => 200]);
     }
 }
