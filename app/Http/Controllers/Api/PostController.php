@@ -8,6 +8,7 @@ use App\Interfaces\PostRepositoryInterface;
 use App\Models\Subscriber;
 use App\Models\Website;
 use Illuminate\Http\Request;
+use Validator;
 
 class PostController extends Controller
 {
@@ -22,14 +23,24 @@ class PostController extends Controller
     {
         $input = request()->all();
 
-        $post = $this->repository->store($input);
+        $validator = Validator::make($input, [
+            'title' => 'required|unique:posts',
+            'description' => 'required'
+        ]);
 
-        $website = Website::find($input['website_id']);
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors(), 'status' => 422]);
+        } else {
 
-        $postSubscribers = $website->subscribers->pluck('email')->toArray();
+            $post = $this->repository->store($input);
 
-        event(new NewPost($postSubscribers, $post));
+            $website = Website::find($input['website_id']);
 
-        return response()->json(['message' => 'Success', 'status' => 200]);
+            $postSubscribers = $website->subscribers->pluck('email')->toArray();
+
+            event(new NewPost($postSubscribers, $post));
+
+            return response()->json(['message' => 'Success', 'status' => 200]);
+        }
     }
 }
