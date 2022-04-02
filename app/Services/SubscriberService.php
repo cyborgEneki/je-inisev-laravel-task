@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Repositories;
+namespace App\Services;
 
-use App\Interfaces\SubscriberRepositoryInterface;
 use App\Models\Subscriber;
 
-class SubscriberRepository implements SubscriberRepositoryInterface
+class SubscriberService
 {
-    public function store($data)
+    public function storeNewSubscriber($data)
     {
         $subscriber = Subscriber::create($data);
         $websites = $data['website_id'];
