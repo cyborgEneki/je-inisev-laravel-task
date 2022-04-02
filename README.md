@@ -23,10 +23,9 @@ OPTIONAL:-
 
 ## Note
 * Be sure to run ```php artisan db:seed``` to get the initial website data.
-* In case you are using the database to hold jobs, remember to:
-    Change ```QUEUE_CONNECTION=database```
-    ```php artisan queue:table``` 
-    ```php artisan migrate```
+* In case you are using the database to hold jobs, change ```QUEUE_CONNECTION=database``` and run
+    ```php artisan queue:table```,
+    ```php artisan migrate```, and
     ```php artisan queue:work```
   to listen for scheduled jobs.
 
