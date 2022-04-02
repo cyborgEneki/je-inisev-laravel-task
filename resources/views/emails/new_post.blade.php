@@ -1,2 +1,2 @@
-{{ post->title }}
-{{ post->description }}
+{{ $post->title }}
+{{ $post->description }}

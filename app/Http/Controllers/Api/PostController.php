@@ -29,7 +29,5 @@ class PostController extends Controller
         $postSubscribers = $website->subscribers->pluck('email')->toArray();
 
         event(new NewPost($postSubscribers, $post));
-
-        // email event
     }
 }
