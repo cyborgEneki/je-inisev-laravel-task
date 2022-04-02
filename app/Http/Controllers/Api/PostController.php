@@ -29,5 +29,7 @@ class PostController extends Controller
         $postSubscribers = $website->subscribers->pluck('email')->toArray();
 
         event(new NewPost($postSubscribers, $post));
+
+        return response()->json(['message' => '', 'status' => 200]);
     }
 }

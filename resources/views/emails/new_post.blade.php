@@ -1,4 +1,3 @@
 <div> 
-    {{ $post->title }}
+    {{ $post->description }}
 </div>
-{{ $post->description }}

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\PostController;
+use App\Http\Controllers\Api\SubscriberController;
 use App\Http\Controllers\Api\WebsiteController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -23,3 +24,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/websites', [WebsiteController::class, 'getWebsites']);
 
 Route::post('/post', [PostController::class, 'store']);
+
+Route::post('/subscriber', [SubscriberController::class, 'store']);

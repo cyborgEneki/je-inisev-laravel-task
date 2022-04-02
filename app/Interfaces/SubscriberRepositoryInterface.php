@@ -2,7 +2,7 @@
 
 namespace App\Interfaces;
 
-interface PostRepositoryInterface
+interface SubscriberRepositoryInterface
 {
   public function store($data);
 }
