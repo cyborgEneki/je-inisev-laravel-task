@@ -2,10 +2,9 @@
 
 namespace App\Console\Commands;
 
-use App\Mail\NewPost;
+use App\Jobs\ScheduleNewPostMail;
 use App\Models\Post;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Mail;
 
 class SendNewPostMail extends Command
 {
@@ -45,8 +44,6 @@ class SendNewPostMail extends Command
         $postId = $this->argument('post');
         $post = Post::find($postId);
 
-        foreach($postSubscribers as $subscriberEmail) {
-            Mail::to($subscriberEmail)->send(new NewPost($post));
-        }
+        dispatch(new ScheduleNewPostMail($postSubscribers, $post));
     }
 }

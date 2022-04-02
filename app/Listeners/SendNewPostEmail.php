@@ -4,11 +4,9 @@ namespace App\Listeners;
 
 use App\Console\Commands\SendNewPostMail;
 use App\Events\NewPost;
-use App\Mail\NewPost as MailNewPost;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\Mail;
 
 class SendNewPostEmail implements ShouldQueue
 {
