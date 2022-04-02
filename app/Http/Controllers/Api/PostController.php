@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Events\NewPost;
 use App\Http\Controllers\Controller;
 use App\Interfaces\PostRepositoryInterface;
 use App\Models\Subscriber;
+use App\Models\Website;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -20,9 +22,13 @@ class PostController extends Controller
     {
         $input = request()->all();
 
-        $this->repository->store($input);
+        $post = $this->repository->store($input);
 
-        $postSubscribers = Subscriber::where('website_id', $input['website_id']);
+        $website = Website::find($input['website_id']);
+
+        $postSubscribers = $website->subscribers->pluck('email')->toArray();
+
+        event(new NewPost($postSubscribers, $post));
 
         // email event
     }

@@ -11,8 +11,6 @@ class NewPost extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $postSubscribers;
-
     public $post;
 
     /**
@@ -20,9 +18,8 @@ class NewPost extends Mailable
      *
      * @return void
      */
-    public function __construct($postSubscribers, $post)
+    public function __construct($post)
     {
-        $this->postSubscribers = $postSubscribers;
         $this->post = $post;
     }
 
