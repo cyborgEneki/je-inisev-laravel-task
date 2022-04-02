@@ -16,7 +16,7 @@ class Websites extends Migration
         Schema::create('websites', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('description');
+            $table->text('description');
             $table->timestamps();
         });
     }

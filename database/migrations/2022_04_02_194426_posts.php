@@ -16,7 +16,7 @@ class Posts extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('description');
+            $table->text('description');
             $table->foreignId('website_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
