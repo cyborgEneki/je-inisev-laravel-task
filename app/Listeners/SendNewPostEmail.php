@@ -2,10 +2,12 @@
 
 namespace App\Listeners;
 
+use App\Console\Commands\SendNewPostMail;
 use App\Events\NewPost;
 use App\Mail\NewPost as MailNewPost;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Mail;
 
 class SendNewPostEmail implements ShouldQueue
@@ -28,8 +30,6 @@ class SendNewPostEmail implements ShouldQueue
      */
     public function handle(NewPost $event)
     {
-        foreach($event->postSubscribers as $subscriberEmail) {
-            Mail::to($subscriberEmail)->send(new MailNewPost($event->post));
-        }
+        Artisan::call(SendNewPostMail::class, ['postSubscribers' => $event->postSubscribers, 'post' => $event->post->id]);
     }
 }

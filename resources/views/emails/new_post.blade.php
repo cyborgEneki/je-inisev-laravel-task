@@ -1,2 +1,4 @@
-{{ $post->title }}
+<div> 
+    {{ $post->title }}
+</div>
 {{ $post->description }}
