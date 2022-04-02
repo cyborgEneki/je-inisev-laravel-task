@@ -16,7 +16,7 @@ MUST:-
 
 OPTIONAL:-
 - [X] Seeded data of the websites.
-- [X] Open API documentation (or) Postman collection demonstrating available APIs & their usage. [Postman Collection](https://go.postman.co/workspace/My-Workspace~f4d09700-4e55-4feb-8e42-645150f240ad/collection/5413672-b2a1cf7a-7bd5-41e1-9705-0ec31ea7e6c6?action=share&creator=5413672)
+- [X] Open API documentation (or) Postman collection demonstrating available APIs & their usage. <div>[Postman Collection](https://go.postman.co/workspace/My-Workspace~f4d09700-4e55-4feb-8e42-645150f240ad/collection/5413672-b2a1cf7a-7bd5-41e1-9705-0ec31ea7e6c6?action=share&creator=5413672)<div>
 - [X] Use of contracts & services.
 - [ ] Use of caching wherever applicable.
 - [X] Use of events/listeners.
